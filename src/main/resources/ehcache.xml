@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+         
+ <defaultCache
+         maxElementsInMemory="1000" eternal="false" timeToLiveSeconds="1200"  
+         timeToIdleSeconds="100"   overflowToDisk="false" diskPersistent="false"	
+         memoryStoreEvictionPolicy="LRU" />
+
+ <!-- 这里的 users 缓存空间是为了下面的 demo 做准备 -->
+<cache
+	 name="SessionCache" eternal="false"
+ 	 maxElementsInMemory="5000"  overflowToDisk="false" 
+ 	 timeToIdleSeconds="300"  timeToLiveSeconds="600" 
+	 diskPersistent="false" memoryStoreEvictionPolicy="LRU" />
+<cache
+	name="token" eternal="false"
+	maxElementsInMemory="10"  overflowToDisk="false" 
+	timeToIdleSeconds="30"  timeToLiveSeconds="10" 
+ 	diskPersistent="false" memoryStoreEvictionPolicy="LRU" />
+<cache
+	name="db" eternal="false"
+	maxElementsInMemory="3000"  overflowToDisk="false" 
+	timeToIdleSeconds="600"  timeToLiveSeconds="1200" 
+ 	diskPersistent="false" memoryStoreEvictionPolicy="LRU" />
+</ehcache>
