@@ -32,7 +32,12 @@ public class QueryServuceDaoImpl implements QueryServiceDao{
 		condition.put("pk_pay", pk_pay);		 
 		String sql="select * from bank_rec where rec_code=:pk_pay";
 		Map<String,Object> master=jdbcTemplate.queryForMap(sql.toString(),condition);
- 		return master;
+		Map<String,Object> map=new HashMap<String,Object>();
+ 			for(String key : master.keySet()) {
+				map.put(key.toLowerCase(), master.get(key));
+			}
+ 	 
+ 		return map;
 	}
 
 	@Override
@@ -45,7 +50,11 @@ public class QueryServuceDaoImpl implements QueryServiceDao{
  		List<Map<String,Object>> certList=jdbcTemplate.queryForList(certSql,condition);
  		
  		for(Map<String,Object> map:certList) {
- 			payListInfoed.put((String) map.get("pk_cert"), map);
+ 			Map<String,Object> lowerMap=new HashMap<String,Object>();
+ 				for(String key:map.keySet()) {
+ 					lowerMap.put(key.toLowerCase(), map.get(key));
+ 				}
+ 			payListInfoed.put((String) map.get("pk_cert"), lowerMap);
  		}
  		return payListInfoed;
 	}

@@ -71,6 +71,8 @@ public class QueryServiceImpl implements QueryService{
 		int status=(int) param.get("status");
 		if(status==0) {
 			Map<String,Object> payListInfo=dao.queryPayListInfo(pk_pay);
+			
+			
 			payInfo.setData(payListInfo);
 			return payInfo;
 		}else {
